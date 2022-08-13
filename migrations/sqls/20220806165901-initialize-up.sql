@@ -1,12 +1,5 @@
-
-CREATE TABLE categories ( 
-    id SERIAL PRIMARY KEY, 
-    name VARCHAR(100)
-);
-
 CREATE TABLE products ( 
     id SERIAL PRIMARY KEY, 
-    category_id integer REFERENCES categories(id),
     name VARCHAR(100), 
     price integer
 );
@@ -22,7 +15,7 @@ CREATE TABLE users (
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY, 
     user_id integer REFERENCES users(id),
-    status integer
+    status VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE order_products (

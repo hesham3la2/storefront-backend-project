@@ -9,22 +9,29 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Products
 
 - Index (gets list of all products): GET /products
+
 - Show (gets one product by id): GET /products/:id
+
 - Create new product [token required]: POST /products
+  body data: `{ name: string, price: number }`
 
 #### Users
 
-- Index (gets list of all users) [token required]: GET /users
-- Show (gets one user by id) [token required]: GET /users/:id
-- Create new user [token required]: POST /users
+- Index (gets list of all users): GET /users
+- Show (gets one user by id): GET /users/:id
+- Create new user: POST /users
+  body data: `{firstname: string, lastname: string, email: string, password: string}`
 - Login : POST /users/login
+  body data: `{email: string, password: string}`
 
 #### Orders
 
 - Index (list of all orders): GET /orders
-- Current (Active) Order by user (args: user id)[token required]: GET /orders/:userId/users
-- Create (create new order for specific user)[token required]: POST /orders
-- Add Product (adds product to current order)[token required]: POST /orders/:id/products
+- Current (Active) Order by user (args: user id): GET /orders/:userId/users
+- Create (create new order for specific user): POST /orders
+  body data: `{userId: number}`
+- Add Product (adds product to current order): POST /orders/:id/products
+  body data: `{quantity: number, productId: number}`
 
 ## Data Shapes
 
@@ -33,7 +40,6 @@ These are the notes from a meeting with the frontend developer that describe wha
 - id
 - name
 - price
-- category_id
 
 #### User
 
@@ -46,8 +52,8 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Orders
 
 - id
-- user_id
-- status of order (active or complete)
+- userId
+- status (active or complete)
 
 #### Orders - Products
 

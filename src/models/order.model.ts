@@ -1,14 +1,9 @@
 import Client from '../database';
 
-export enum Order_Status {
-  ACTIVE,
-  COMPLETE,
-}
-
 export type Order = {
   id?: number;
   user_id: number;
-  status: Order_Status;
+  status: 'active' | 'complete';
 };
 
 export class OrderStore {
@@ -29,7 +24,8 @@ export class OrderStore {
     try {
       const conn = await Client.connect();
       const sql = 'SELECT * FROM orders WHERE user_id = $1 AND status = $2';
-      const result = await conn.query(sql, [userId, Order_Status.ACTIVE]);
+      const result = await conn.query(sql, [userId, 'active']);
+
       conn.release();
       if (result.rows.length) {
         const order = result.rows[0];
@@ -47,7 +43,7 @@ export class OrderStore {
       const conn = await Client.connect();
       const sql =
         'INSERT INTO orders (user_id,status) VALUES ($1,$2) RETURNING *';
-      const result = await conn.query(sql, [userId, Order_Status.ACTIVE]);
+      const result = await conn.query(sql, [userId, 'active']);
       conn.release();
       const order = result.rows[0];
       return order;

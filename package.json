@@ -5,9 +5,9 @@
   "main": "server.ts",
   "scripts": {
     "prestart": "tsc",
-    "start": "node dist/server.js",
-    "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
-    "createDB": "POSTGRES_TEST_DB=storefront_test db-migrate db:create storefront_test",
+    "start": "ENV=dev node dist/server.js",
+    "watch": "ENV=dev tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
+    "testDB": "POSTGRES_TEST_DB=storefront_test db-migrate db:create storefront_test",
     "pretest": "db-migrate --env test up && npm run tsc",
     "test": "ENV=test jasmine",
     "posttest": "db-migrate --env test down",

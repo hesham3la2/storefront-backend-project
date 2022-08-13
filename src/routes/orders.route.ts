@@ -11,9 +11,9 @@ const router = Router();
 
 router.get('/', index);
 
-router.get('/:id/users', auth, getOderByUser);
+router.get('/:id/users', getOderByUser);
 
-router.post('/', auth, create);
-router.post('/:id/products', auth, addProduct);
+router.post('/', create);
+router.post('/:id/products', addProduct);
 
 export default router;

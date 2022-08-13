@@ -1,4 +1,4 @@
-import { Order_Status, OrderStore } from '../../models/order.model';
+import { OrderStore } from '../../models/order.model';
 import { UserStore } from '../../models/user.model';
 
 const store = new OrderStore();
@@ -23,7 +23,7 @@ describe('Order Model', () => {
     const testOrder = {
       id: 1,
       user_id: 1,
-      status: Order_Status.ACTIVE,
+      status: 'active' as 'active',
     };
 
     it('create method should return created order', async () => {

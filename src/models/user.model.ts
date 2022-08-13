@@ -55,6 +55,7 @@ export class UserStore {
         user.password + PEPPER,
         parseInt(SALT_ROUNDS!)
       );
+
       const result = await conn.query(sql, [
         user.firstname,
         user.lastname,

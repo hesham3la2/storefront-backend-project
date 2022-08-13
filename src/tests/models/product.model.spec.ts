@@ -15,7 +15,7 @@ describe('Product Model', () => {
     });
   });
   describe('test product model methods', () => {
-    const testProduct = { id: 1, name: 'product', price: 100, category_id: 1 };
+    const testProduct = { id: 1, name: 'product', price: 100 };
 
     it('create method should return created product', async () => {
       const result = await store.create(testProduct);

@@ -24,11 +24,10 @@ This repo for storefront backend udacity project.
 
 Run `npm start` to start the backend API
 
-### Start App
+### Start App in dev mode
 
-`yarn watch` or `npm run watch`
-
-!['start server'](./docs/start.png)
+`db-migrate up` then
+`npm run watch`
 
 ## Ports
 

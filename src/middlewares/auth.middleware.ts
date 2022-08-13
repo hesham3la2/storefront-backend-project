@@ -18,11 +18,11 @@ export const auth = async (
     if (!authString) throw new Error('unauthorized');
     const token = authString.substring(7);
 
-    const { sub } = jwt.verify(token, AUTH_SECRET as Secret) as JwtPayload;
-    if (!sub) throw new Error('unauthorized');
+    const { id } = jwt.verify(token, AUTH_SECRET as Secret) as JwtPayload;
+    if (!id) throw new Error('unauthorized');
 
     const store = new UserStore();
-    const user = await store.show(parseInt(sub));
+    const user = await store.show(id);
 
     if (!user) throw new Error('unauthorized');
 
