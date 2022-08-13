@@ -1,12 +1,5 @@
 import Client from '../database';
 
-// #### Orders
-// - id
-// - id of each product in the order
-// - quantity of each product in the order
-// - user_id
-// - status of order (active or complete)
-
 export enum Order_Status {
   ACTIVE,
   COMPLETE,
@@ -32,14 +25,18 @@ export class OrderStore {
     }
   }
 
-  async show(id: number): Promise<Order> {
+  async getOderByUser(userId: number): Promise<Order> {
     try {
       const conn = await Client.connect();
-      const sql = 'SELECT * FROM orders WHERE id = $1';
-      const result = await conn.query(sql, [id]);
+      const sql = 'SELECT * FROM orders WHERE user_id = $1 AND status = $2';
+      const result = await conn.query(sql, [userId, Order_Status.ACTIVE]);
       conn.release();
-      const order = result.rows[0];
-      return order;
+      if (result.rows.length) {
+        const order = result.rows[0];
+        return order;
+      } else {
+        throw new Error('There is no orders for specified user');
+      }
     } catch (error) {
       throw new Error('Failed to find requested order from database');
     }

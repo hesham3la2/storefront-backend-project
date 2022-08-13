@@ -15,11 +15,11 @@ describe('Product Model', () => {
     });
   });
   describe('test product model methods', () => {
-    const testProduct = { name: 'product', price: 100, category_id: 1 };
+    const testProduct = { id: 1, name: 'product', price: 100, category_id: 1 };
 
     it('create method should return created product', async () => {
       const result = await store.create(testProduct);
-      expect(result).toEqual({ id: 1, ...testProduct });
+      expect(result).toEqual(testProduct);
     });
     it('index method should return list of products', async () => {
       const result = await store.index();

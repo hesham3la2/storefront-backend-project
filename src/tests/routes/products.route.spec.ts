@@ -16,7 +16,13 @@ describe('products endpoint', () => {
     expect(response.status).toBe(200);
   });
   it('create: POST /products', async () => {
-    const response = await request.post('/products').send(testProduct);
+    const response = await request
+      .post('/products')
+      .set({
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZmlyc3RuYW1lIjoiSm9obiBEb2UiLCJsYXN0bmFtZSI6MTUxNjIzOTAyMn0.B5p_Kq6hOneLL59nV_oTH072J5ywTmXmoTWroBUsD_s',
+      })
+      .send(testProduct);
     expect(response.status).toBe(200);
   });
 });

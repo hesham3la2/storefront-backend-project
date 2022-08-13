@@ -12,10 +12,11 @@ CREATE TABLE products (
 );
 
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY,
     firstname VARCHAR(100), 
     lastname VARCHAR(100), 
-    password VARCHAR(255)
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE orders (

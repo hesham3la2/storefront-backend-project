@@ -1,13 +1,19 @@
 import { Router } from 'express';
-import { index, show, create, addProduct } from '../handlers/orders.handler';
+import {
+  index,
+  getOderByUser,
+  create,
+  addProduct,
+} from '../handlers/orders.handler';
+import { auth } from '../middlewares/auth.middleware';
 
 const router = Router();
 
 router.get('/', index);
 
-router.get('/:id', show);
+router.get('/:id/users', auth, getOderByUser);
 
-router.post('/', create);
-router.post('/:id/products', addProduct);
+router.post('/', auth, create);
+router.post('/:id/products', auth, addProduct);
 
 export default router;

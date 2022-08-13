@@ -1,22 +1,22 @@
 import { Order_Status, OrderStore } from '../../models/order.model';
 import { UserStore } from '../../models/user.model';
 
-const orderStore = new OrderStore();
+const store = new OrderStore();
 const userStore = new UserStore();
 
 describe('Order Model', () => {
   describe('Are required methods exist', () => {
     it('should have index method', () => {
-      expect(orderStore.index).toBeDefined();
+      expect(store.index).toBeDefined();
     });
-    it('should have show method', () => {
-      expect(orderStore.show).toBeDefined();
+    it('should have getOderByUser method', () => {
+      expect(store.getOderByUser).toBeDefined();
     });
     it('should have create method', () => {
-      expect(orderStore.create).toBeDefined();
+      expect(store.create).toBeDefined();
     });
     it('should have addProduct method', () => {
-      expect(orderStore.addProduct).toBeDefined();
+      expect(store.addProduct).toBeDefined();
     });
   });
   describe('test order model methods', () => {
@@ -27,15 +27,15 @@ describe('Order Model', () => {
     };
 
     it('create method should return created order', async () => {
-      const result = await orderStore.create(1);
+      const result = await store.create(1);
       expect(result).toEqual(testOrder);
     });
     it('index method should return list of orders', async () => {
-      const result = await orderStore.index();
+      const result = await store.index();
       expect(result).toEqual([testOrder]);
     });
-    it('show method should return order by id', async () => {
-      const result = await orderStore.show(1);
+    it('getOderByUser method should return order by user id', async () => {
+      const result = await store.getOderByUser(1);
       expect(result).toEqual(testOrder);
     });
   });

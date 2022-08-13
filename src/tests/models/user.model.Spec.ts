@@ -13,16 +13,23 @@ describe('User Model', () => {
     it('should have create method', () => {
       expect(store.create).toBeDefined();
     });
+    it('should have login method', () => {
+      expect(store.login).toBeDefined();
+    });
   });
   describe('test user model methods', () => {
     const testUser = {
+      id: 1,
       firstname: 'first',
       lastname: 'last',
-      password: 'hashed-string',
+      email: 'email@email.com',
     };
 
     it('create method should return created user', async () => {
-      const result = await store.create(testUser);
+      const result = await store.create({
+        ...testUser,
+        password: 'hashed-string',
+      });
       expect(result).toEqual(testUser);
     });
     it('index method should return list of users', async () => {
@@ -31,6 +38,10 @@ describe('User Model', () => {
     });
     it('show method should return user by id', async () => {
       const result = await store.show(1);
+      expect(result).toEqual(testUser);
+    });
+    it('login method should return user by email', async () => {
+      const result = await store.login('email@email.com', 'hashed-string');
       expect(result).toEqual(testUser);
     });
   });

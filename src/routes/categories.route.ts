@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
 import { index, show, create } from '../handlers/categories.handler';
 
 const router = Router();

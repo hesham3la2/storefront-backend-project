@@ -1,12 +1,14 @@
-import { Router, Request, Response } from 'express';
-import { index, show, create } from '../handlers/users.handler';
+import { Router } from 'express';
+import { auth } from '../middlewares/auth.middleware';
+import { index, show, create, login } from '../handlers/users.handler';
 
 const router = Router();
 
-router.get('/', index);
+router.get('/', auth, index);
 
-router.get('/:id', show);
+router.get('/:id', auth, show);
 
-router.post('/', create);
+router.post('/', auth, create);
+router.post('/login', login);
 
 export default router;

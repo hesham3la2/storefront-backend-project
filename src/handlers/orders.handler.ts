@@ -7,9 +7,10 @@ export const index = async (_req: Request, res: Response) => {
   const orders = await store.index();
   res.json(orders);
 };
-export const show = async (req: Request, res: Response) => {
+
+export const getOderByUser = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const order = await store.show(+id);
+  const order = await store.getOderByUser(+id);
   res.json(order);
 };
 export const create = async (req: Request, res: Response) => {
