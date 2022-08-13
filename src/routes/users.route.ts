@@ -8,7 +8,7 @@ router.get('/', auth, index);
 
 router.get('/:id', auth, show);
 
-router.post('/', auth, create);
+router.post('/', create);
 router.post('/login', login);
 
 export default router;
