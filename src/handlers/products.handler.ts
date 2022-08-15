@@ -4,16 +4,28 @@ import { ProductStore } from '../models/product.model';
 const store = new ProductStore();
 
 export const index = async (_req: Request, res: Response) => {
-  const products = await store.index();
-  res.json(products);
+  try {
+    const products = await store.index();
+    res.json(products);
+  } catch (error) {
+    res.status(404);
+  }
 };
 export const show = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const product = await store.show(+id);
-  res.json(product);
+  try {
+    const { id } = req.params;
+    const product = await store.show(+id);
+    res.json(product);
+  } catch (error) {
+    res.status(404);
+  }
 };
 export const create = async (req: Request, res: Response) => {
-  const data = req.body;
-  const product = await store.create(data);
-  res.json(product);
+  try {
+    const data = req.body;
+    const product = await store.create(data);
+    res.json(product);
+  } catch (error) {
+    res.status(401).send('Unauthorized');
+  }
 };

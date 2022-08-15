@@ -10,6 +10,17 @@ This repo for storefront backend udacity project.
 
 - `npm install`
 
+### Updata configuration data in .env file .env.example is added with example values
+
+- ENV
+- POSTGRES_HOST
+- POSTGRES_DB
+- POSTGRES_USER
+- POSTGRES_PASSWORD
+- AUTH_SECRET
+- SALT_ROUNDS
+- PEPPER
+
 ### Create postgresql container configured with data in .env file
 
 - `docker compose up -d`

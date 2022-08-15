@@ -61,3 +61,32 @@ These are the notes from a meeting with the frontend developer that describe wha
 - product id
 - order id
 - quantity of product
+
+## Database Schema
+
+#### products table
+
+- id SERIAL PRIMARY KEY,
+- name VARCHAR(100),
+- price integer
+
+#### users table
+
+- id SERIAL PRIMARY KEY,
+- firstname VARCHAR(100),
+- lastname VARCHAR(100),
+- email VARCHAR(150) NOT NULL UNIQUE,
+- password VARCHAR(255) NOT NULL
+
+#### orders table
+
+- id SERIAL PRIMARY KEY,
+- user_id integer REFERENCES users(id),
+- status VARCHAR(10) NOT NULL
+
+#### order_products table
+
+- id SERIAL PRIMARY KEY,
+- product_id integer REFERENCES products(id),
+- order_id integer REFERENCES orders(id),
+- quantity integer
