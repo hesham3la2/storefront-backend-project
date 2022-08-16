@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import { auth } from '../middlewares/auth.middleware';
 import { index, show, create, login } from '../handlers/users.handler';
+import { auth } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-router.get('/', index);
+router.get('/', auth, index);
 
-router.get('/:id', show);
+router.get('/:id', auth, show);
 
 router.post('/', create);
 router.post('/login', login);
