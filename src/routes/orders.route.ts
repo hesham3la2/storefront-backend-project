@@ -9,11 +9,11 @@ import { auth } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-router.get('/', index);
+router.get('/',auth, index);
 
-router.get('/:id/users', getOderByUser);
+router.get('/:id/users', auth, getOderByUser);
 
-router.post('/', create);
-router.post('/:id/products', addProduct);
+router.post('/', auth, create);
+router.post('/:id/products', auth, addProduct);
 
 export default router;
