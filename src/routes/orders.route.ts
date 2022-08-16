@@ -9,7 +9,7 @@ import { auth } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-router.get('/',auth, index);
+router.get('/', auth, index);
 
 router.get('/:id/users', auth, getOderByUser);
 

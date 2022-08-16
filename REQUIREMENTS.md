@@ -17,8 +17,8 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Users
 
-- Index (gets list of all users): GET /users
-- Show (gets one user by id): GET /users/:id
+- Index (gets list of all users) [token required]: GET /users
+- Show (gets one user by id) [token required]: GET /users/:id
 - Create new user: POST /users
   body data: `{firstname: string, lastname: string, email: string, password: string}`
 - Login : POST /users/login
@@ -26,11 +26,11 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Orders
 
-- Index (list of all orders): GET /orders
-- Current (Active) Order by user (args: user id): GET /orders/:userId/users
-- Create (create new order for specific user): POST /orders
+- Index (list of all orders) [token required]: GET /orders
+- Current (Active) Order by user (args: user id) [token required]: GET /orders/:userId/users
+- Create (create new order for specific user) [token required]: POST /orders
   body data: `{userId: number}`
-- Add Product (adds product to current order): POST /orders/:id/products
+- Add Product (adds product to current order) [token required]: POST /orders/:id/products
   body data: `{quantity: number, productId: number}`
 
 ## Data Shapes
